@@ -41,32 +41,79 @@ const swiper = new Swiper(".swiper", {
   },
 });
 
-const modal = document.querySelector(".modal");
-const modalDialog = document.querySelector(".modal-dialog");
+// document.addEventListener("click", (event) => {
+//   console.log();
+//   if (
+//     event.target.dataset.toggle == "modal" ||
+//     event.target.parentNode.dataset.toggle == "modal" ||
+//     (!event.composedPath().includes(modalDialog) &&
+//       modal.classList.contains("is-open"))
+//   ) {
+//     event.preventDefault();
+//     modal.classList.toggle("is-open");
+//   }
+// });
 
-document.addEventListener("click", (event) => {
-  console.log();
-  if (
-    event.target.dataset.toggle == "modal" ||
-    event.target.parentNode.dataset.toggle == "modal" ||
-    (!event.composedPath().includes(modalDialog) &&
-      modal.classList.contains("is-open"))
-  ) {
+// document.addEventListener("keyup", (event) => {
+//   if (event.key == "Escape" && modal.classList.contains("is-open")) {
+//     modal.classList.toggle("is-open");
+//   }
+// });
+
+let currentModal; //текущее модельное окно
+let modalDialog; //белое диалоговое окно
+let alertModal = document.querySelector("#alert-modal"); //окно с предупреждением
+// находим вызыватели или переключатели модальных окон
+const modalButtons = document.querySelectorAll("[data-toggle=modal]");
+
+modalButtons.forEach((button) => {
+  button.addEventListener("click", (event) => {
+    //отмена стандартного поведения при клике
     event.preventDefault();
-    modal.classList.toggle("is-open");
-  }
+    //клик по переключателю
+    // определяем текущее открытое окно
+    currentModal = document.querySelector(button.dataset.target);
+    //открываем текущее окно присваивая класс is-open
+    currentModal.classList.toggle("is-open");
+    //назначаем новое диалоговое окно
+    modalDialog = currentModal.querySelector(".modal-dialog");
+    modal_to_main = currentModal.querySelector(".mf-btn-thanks");
+    console.log(button.dataset.target);
+    //отслеживаем события клика внутри диалогового окна, клик по окну и пустым областям
+    currentModal.addEventListener("click", (event) => {
+      //если клик в пустую область вне окна, закрываем окно удаляя класс
+      if (!event.composedPath().includes(modalDialog)) {
+        //закрытие окна
+        currentModal.classList.remove("is-open");
+      }
+    });
+  });
 });
 
+//костыль который при отправке заявки через СТА минуя первую модалку, заранее устанавливает currentModal
+const сta_buttons = document.querySelectorAll(".cta-form-button"); //Собираем все кнопки где запускается окно благодарности
+сta_buttons.forEach((cta_button) => {
+  console.log(cta_button);
+  cta_button.addEventListener("click", (event) => {
+    currentModal = alertModal;
+  });
+});
+
+// const staButton = document.querySelector(".cta-form-button");
+
+//отлавливаем событие нажатия на кнопки
 document.addEventListener("keyup", (event) => {
-  if (event.key == "Escape" && modal.classList.contains("is-open")) {
-    modal.classList.toggle("is-open");
+  //проверка что это escape и текущее окно открыто( склассом из-опен). Если все ок то окно закрывается
+  if (event.key == "Escape" && currentModal.classList.contains("is-open")) {
+    event.preventDefault();
+    currentModal.classList.toggle("is-open");
   }
 });
 
-const forms = document.querySelectorAll(".phone-form"); //Собираем все формы
+const phone_forms = document.querySelectorAll(".phone-form"); //Собираем все формы
 //const forms = document.querySelectorAll("form"); //Собираем все формы
 //Перебираем каждую форму через foreach
-forms.forEach((form) => {
+phone_forms.forEach((form) => {
   //создаем новый обьект для проверки
   console.log(form);
   const validation = new JustValidate(form, {
@@ -98,11 +145,24 @@ forms.forEach((form) => {
         }).then((response) => {
           if (response.ok) {
             thisForm.reset();
-            if (modal.classList.contains("is-open")) {
-              event.preventDefault();
-              modal.classList.toggle("is-open");
-            }
+            //у текущего модокна удаляем класс из-опен(делаем невидимым) здесть получается финт, что если идет через 2 модалки то логично что закрывает сначала предыдущую, а если через cta то он просто впустую  отнимает класс которого нет потом снова его присваивая. но думаю сойдет
+            currentModal.classList.remove("is-open");
+            currentModal = alertModal;
+            currentModal.classList.add("is-open");
+            modalDialog = currentModal.querySelector(".modal-dialog");
+            //отслеживаем события клика внутри диалогового окна, клик по окну и пустым областям
 
+            currentModal.addEventListener("click", (event) => {
+              //если клик в пустую область вне окна, закрываем окно удаляя класс
+              if (!event.composedPath().includes(modalDialog)) {
+                //закрытие окна
+                currentModal.classList.remove("is-open");
+              }
+              if (event.composedPath().includes(modal_to_main)) {
+                //возврат к главной странице
+                document.location.href = "/";
+              }
+            });
             // event.preventDefault();
             // currentModal.classList.toggle("is-open");
             // modalThanks.classList.toggle("is-open");
@@ -117,10 +177,10 @@ forms.forEach((form) => {
     });
 });
 
-const forms2 = document.querySelectorAll("#mail-form"); //Собираем все формы
+const mail_forms2 = document.querySelectorAll("#mail-form"); //Собираем все формы
 //const forms = document.querySelectorAll("form"); //Собираем все формы
 //Перебираем каждую форму через foreach
-forms2.forEach((form2) => {
+mail_forms2.forEach((form2) => {
   //создаем новый обьект для проверки
   console.log(form2);
   const validation = new JustValidate(form2, {
@@ -162,10 +222,24 @@ forms2.forEach((form2) => {
         }).then((response) => {
           if (response.ok) {
             thisForm.reset();
-            if (modal.classList.contains("is-open")) {
-              event.preventDefault();
-              modal.classList.toggle("is-open");
-            }
+            //у текущего модокна удаляем класс из-опен(делаем невидимым) здесть получается финт, что если идет через 2 модалки то логично что закрывает сначала предыдущую, а если через cta то он просто впустую  отнимает класс которого нет потом снова его присваивая. но думаю сойдет
+            currentModal.classList.remove("is-open");
+            currentModal = alertModal;
+            currentModal.classList.add("is-open");
+            modalDialog = currentModal.querySelector(".modal-dialog");
+            //отслеживаем события клика внутри диалогового окна, клик по окну и пустым областям
+
+            currentModal.addEventListener("click", (event) => {
+              //если клик в пустую область вне окна, закрываем окно удаляя класс
+              if (!event.composedPath().includes(modalDialog)) {
+                //закрытие окна
+                currentModal.classList.remove("is-open");
+              }
+              if (event.composedPath().includes(modal_to_main)) {
+                //возврат к главной странице
+                document.location.href = "/";
+              }
+            });
 
             // event.preventDefault();
             // currentModal.classList.toggle("is-open");

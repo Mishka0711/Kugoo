@@ -82,16 +82,22 @@
             </button>
           </div>
           <div class="search-links-group">
-            <img src="img/balance.svg" width="20" height="20" alt="">
+            <a href="#" class="search-link">
+            <img src="img/balance.svg" width="20" height="20" alt="compare">
+            </a>            
+            <a href="#" class="search-link">
             <svg class="search-link-icon" width="20" height="20">
               <use href="img/sprite.svg#heart"></use>
-            </svg>
-            <div class="cart-group">
+            </svg>              
+            </a>
+
+
+            <a href="#" class="cart-group search-link">
               <svg class="search-link-icon" width="20" height="20">
                 <use href="img/sprite.svg#cart"></use>
               </svg>
               <p class="cart-text" >Корзина</p>
-            </div>
+            </a>
           </div>
         </div>
         <!-- /.header-search -->
@@ -155,7 +161,12 @@
                   <use href="img/sprite.svg#galka"></use>
                 </svg>    
               </div> 
-              <b>Понять</b> подходит ли вам конкретная модель;        
+              <span class="no_adaptive">
+              <b>Понять</b> подходит ли вам конкретная модель; 
+              </span>
+              <span class="adaptive">
+              Понять подходит ли вам конкретная модель; 
+              </span>       
             </li>
             <li class="block1-item">
               <div class="block1-item-ic-container" >
@@ -163,15 +174,25 @@
                   <use href="img/sprite.svg#galka"></use>
                 </svg>    
               </div>
-              <b>Испытать </b> самокат в «реальной жизни»;        
+              <span class="no_adaptive">
+              <b>Испытать </b> самокат в «реальной жизни»;  
+              </span>
+              <span class="adaptive">
+                Испытать самокат в «реальной жизни»; 
+              </span>                      
             </li>
             <li class="block1-item">
               <div class="block1-item-ic-container" >
                 <svg width="22" height="22" class="client-list-icon">
                   <use href="img/sprite.svg#galka"></use>
                 </svg>    
-              </div>   
-              <b>Оценить</b> удобство хранения и эксплуатации;       
+              </div>  
+              <span class="no_adaptive">
+              <b>Оценить</b> удобство хранения и эксплуатации;  
+              </span> 
+              <span class="adaptive">
+                Оценить удобство хранения и эксплуатации; 
+              </span>                    
             </li>
             <li class="block1-item" >
               <div class="block1-item-ic-container" >
@@ -179,7 +200,12 @@
                   <use href="img/sprite.svg#galka"></use>
                 </svg>    
               </div>
-              <b>Узнать</b> реальные характеристики и возможности модели.       
+              <span class="no_adaptive">
+              <b>Узнать</b> реальные характеристики и возможности модели. 
+              </span>
+              <span class="adaptive">
+              Узнать реальные характеристики и возможности модели.
+              </span>                      
             </li>                                    
           </ul>
         </div>
@@ -567,7 +593,7 @@
                 maxlength="30"
                 required
               />            
-              <button type="submit" class=" button  make-button3"  >
+              <button type="submit" class=" button  make-button3 cta-form-button"  >
                 Оставить заявку на тест-драйв
               </button>            
             </div>
@@ -604,7 +630,7 @@
             maxlength="30"
             required
           />                      
-          <button type="submit" class="button make-button4" >
+          <button type="submit" class="button make-button4 cta-form-button" >
             Подписаться
           </button>            
         </div>       
@@ -839,6 +865,30 @@
       </a>
       </div> 
    </div>
+   <div class="modal" id="alert-modal">
+      <div class="modal-dialog">
+        <div class="modal-content-wrapper">                    
+          <div class="modal-title-block">
+            <h2 class="modal-title">
+              Спасибо <br> ваша заявка принята!
+            </h2>            
+          </div>
+          <div class="modal-contacts-block">
+            <button type="reset" class="button modal-form-button mf-btn-thanks" data-toggle="modal" data-target="#alert-modal">
+          Вернуться на главную
+          <!-- <a href="./index.php"></a> -->          
+          </button>
+          </div>
+          <!-- /.modal-form-footer -->        
+        </div>             
+      <img src="img/modal.png" alt="" class="modal-img-cont">
+      <a href="#" class="modal-close" data-toggle="modal" data-target="#alert-modal">
+        <svg class="close-icon" width="20" height="20">
+          <use href="img/sprite.svg#mw_close"></use>
+        </svg>
+      </a>
+      </div> 
+   </div>   
    <script src="js/swiper-bundle.min.js"></script>
    <script src="js/just-validate.production.min.js"></script>
    <script src="js/main.js"></script>
