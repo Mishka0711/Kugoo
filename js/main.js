@@ -10,6 +10,37 @@ butGals.forEach((butGal) => {
   });
 });
 
+const swiper = new Swiper(".swiper", {
+  speed: 400,
+  autoHeight: true,
+  slidesPerView: 1,
+  navigation: {
+    prevEl: ".steps-slider-button-prev",
+    nextEl: ".steps-slider-button-next",
+  },
+  // Responsive breakpoints
+  breakpoints: {
+    // when window width is >= 320px
+    576: {
+      slidesPerView: 2,
+      // centeredSlides: true,
+      // slidesOffsetBefore: -100,
+      // slidesOffsetAfter: 60,
+    },
+    // when window width is >= 480px
+    880: {
+      slidesPerView: 2,
+    },
+    // when window width is >= 640px
+    1024: {
+      slidesPerView: 3,
+    },
+    1200: {
+      slidesPerView: 4,
+    },
+  },
+});
+
 const modal = document.querySelector(".modal");
 const modalDialog = document.querySelector(".modal-dialog");
 
