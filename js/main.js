@@ -160,7 +160,7 @@ phone_forms.forEach((form) => {
               }
               if (event.composedPath().includes(modal_to_main)) {
                 //возврат к главной странице
-                document.location.href = "/";
+                document.location.href = "./index.php";
               }
             });
             // event.preventDefault();
@@ -237,7 +237,7 @@ mail_forms2.forEach((form2) => {
               }
               if (event.composedPath().includes(modal_to_main)) {
                 //возврат к главной странице
-                document.location.href = "/";
+                document.location.href = "./index.php";
               }
             });
 

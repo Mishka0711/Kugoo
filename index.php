@@ -578,7 +578,7 @@
     <img src="./img/portrait-woman.png" alt="call to action" class="cta-image" />
       <div class="container">
         <div class="cta-content-wrapper">
-          <form action="/handler.php" method="POST" class="cta-form phone-form" >
+          <form action="./handler.php" method="POST" class="cta-form phone-form" >
             <h2 class="cta-form-title">Нет нужной модели, которую хотите протестировать?</h2>
             <p class="cta-form-subtitle">
               Оставьте заявку, и менеджер подберет нужный самокат
@@ -615,7 +615,7 @@
    </section> 
    <footer class="footer">
     <div class="footer-top">
-    <form action="/handler.php" method="POST" class="cta-form" id="mail-form">
+    <form action="./handler.php" method="POST" class="cta-form" id="mail-form">
      <div class="container footer-top-cont">
         <h2 class="footer-email-title">
           Оставьте свою почту и станьте первым, кто получит скидку на новые самокаты
@@ -825,7 +825,7 @@
             <p class="modal-text-2">
               Как с вами удобнее связаться?
             </p>  
-            <form action="/handler.php" method="POST" class="modal-form phone-form" >
+            <form action="./handler.php" method="POST" class="modal-form phone-form" >
               <div class="input-group ">
                 <input
                   id="modal-user-phone"
