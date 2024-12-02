@@ -5,8 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jost:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
     <link rel="stylesheet" href="./css/normalize.css" />
     <link rel="stylesheet" href="./css/style.css" />
     <title>KUGOO</title>
@@ -54,10 +55,9 @@
       </div>
       <hr class="header-separator" />
       <div class="container">
-        <div class="header-search">
-          <div class="header-logo">
-            <h1>KUGOO</h1>
-          </div>
+        <div class="header-search">        
+            <a href="./index.php" class="header-logo">
+              <h1 class="header-logo-title">KUGOO</h1></a>            
           <a href="#" class="button catalog-button">
             <div class="catalog-lines">
               <div class="catalog-line"></div>
@@ -315,7 +315,7 @@
             </a>   
           </div>         
         </div>  
-        <button class="button make-button2">
+        <button class="button make-button2" data-toggle="modal" data-target="#feedback-modal">
           <span class="make-button-text2">
             Записаться на тест-драйв
           </span>          
@@ -536,7 +536,7 @@
     <img src="./img/portrait-woman.png" alt="call to action" class="cta-image" />
       <div class="container">
         <div class="cta-content-wrapper">
-          <form action="/handler.php" method="POST" class="cta-form">
+          <form action="/handler.php" method="POST" class="cta-form phone-form" >
             <h2 class="cta-form-title">Нет нужной модели, которую хотите протестировать?</h2>
             <p class="cta-form-subtitle">
               Оставьте заявку, и менеджер подберет нужный самокат
@@ -573,7 +573,7 @@
    </section> 
    <footer class="footer">
     <div class="footer-top">
-    <form action="/handler.php" method="POST" class="cta-form">
+    <form action="/handler.php" method="POST" class="cta-form" id="mail-form">
      <div class="container footer-top-cont">
         <h2 class="footer-email-title">
           Оставьте свою почту и станьте первым, кто получит скидку на новые самокаты
@@ -582,7 +582,7 @@
           <input
             id="user-email"
             type="email"
-            class="input phone-mask"
+            class="input email-mask"
             name="usermail"
             placeholder="Введите Ваш email"
             maxlength="30"
@@ -667,9 +667,8 @@
         
       <hr class="footer-separator" />  
       <div class="footer-bottom1">
-        <div class="header-logo">
-          <h2>KUGOO</h2>
-        </div>    
+      <a href="./index.php" class="header-logo">
+              <h1 class="header-logo-title">KUGOO</h1></a>     
         <div class="store-count-block">
           <div class="store-blocks">
             <a href="#" class="store-link">
@@ -784,7 +783,7 @@
             <p class="modal-text-2">
               Как с вами удобнее связаться?
             </p>  
-            <form action="/handler.php" method="POST" class="modal-form">
+            <form action="/handler.php" method="POST" class="modal-form phone-form" >
               <div class="input-group ">
                 <input
                   id="modal-user-phone"
@@ -815,8 +814,7 @@
             </div>
           </div>
           <!-- /.modal-form-footer -->        
-        </div>
-             
+        </div>             
       <img src="img/modal.png" alt="" class="modal-img-cont">
       <a href="#" class="modal-close" data-toggle="modal" data-target="#feedback-modal">
         <svg class="close-icon" width="20" height="20">
@@ -825,6 +823,7 @@
       </a>
       </div> 
    </div>
+   
    <script src="js/just-validate.production.min.js"></script>
    <script src="js/main.js"></script>
   </body>

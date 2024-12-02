@@ -32,7 +32,8 @@ document.addEventListener("keyup", (event) => {
   }
 });
 
-const forms = document.querySelectorAll("form"); //Собираем все формы
+const forms = document.querySelectorAll(".phone-form"); //Собираем все формы
+//const forms = document.querySelectorAll("form"); //Собираем все формы
 //Перебираем каждую форму через foreach
 forms.forEach((form) => {
   //создаем новый обьект для проверки
@@ -42,6 +43,60 @@ forms.forEach((form) => {
   });
   validation
     //проверка поля ввода номера
+    .addField("[name=userphone]", [
+      {
+        // если ничего не найдено
+        rule: "required",
+        errorMessage: "Укажите телефон",
+      },
+      {
+        // если мало символов
+        rule: "minLength",
+        value: 16,
+        errorMessage: "Неполный номер",
+      },
+    ])
+    .onSuccess((event) => {
+      const thisForm = event.target; //Наша форма
+      const formData = new FormData(thisForm); //данные из нашей форсы
+      const ajaxsend = (formData) => {
+        fetch(thisForm.getAttribute("action"), {
+          method: thisForm.getAttribute("method"),
+          body: formData,
+          // если ответ 200 то закрываем модалку с полями и от1крываем модалку с подтверждением
+        }).then((response) => {
+          if (response.ok) {
+            thisForm.reset();
+            if (modal.classList.contains("is-open")) {
+              event.preventDefault();
+              modal.classList.toggle("is-open");
+            }
+
+            // event.preventDefault();
+            // currentModal.classList.toggle("is-open");
+            // modalThanks.classList.toggle("is-open");
+            //document.location.href = "/";
+          } else {
+            alert(response.statusText);
+          }
+        });
+      };
+      ajaxsend(formData);
+      console.log(event.target.getAttribute("method"));
+    });
+});
+
+const forms2 = document.querySelectorAll("#mail-form"); //Собираем все формы
+//const forms = document.querySelectorAll("form"); //Собираем все формы
+//Перебираем каждую форму через foreach
+forms2.forEach((form2) => {
+  //создаем новый обьект для проверки
+  console.log(form2);
+  const validation = new JustValidate(form2, {
+    errorFieldCssClass: "is-invalid",
+  });
+  validation
+    //проверка поля ввода почты
     .addField("[name=usermail]", [
       {
         //если ничего не введено
@@ -60,19 +115,9 @@ forms.forEach((form) => {
         value: 7,
         errorMessage: "почта от 7 символов",
       },
-    ])
-    //проверка поля ввода номера
-    .addField("[name=userphone]", [
       {
-        // если ничего не найдено
-        rule: "required",
-        errorMessage: "Укажите телефон",
-      },
-      {
-        // если мало символов
-        rule: "minLength",
-        value: 6,
-        errorMessage: "Неполный номер",
+        rule: "email",
+        errorMessage: "Это не похоже на почту",
       },
     ])
     .onSuccess((event) => {

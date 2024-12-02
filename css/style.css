@@ -82,6 +82,10 @@
   width: 100%;
 }
 
+.header-logo {
+  text-decoration: none;
+}
+
 .header-logo h1 {
   margin: 0;
   padding: 0;
@@ -93,6 +97,7 @@
   letter-spacing: 0%;
   text-align: left;
   text-transform: uppercase;
+  cursor: pointer;
 }
 
 .button {
@@ -883,6 +888,7 @@
 
 .footer-bottom1 {
   display: flex;
+  align-items: center;
   gap: 3.6875rem;
   margin: 2rem 0;
 }
@@ -1095,6 +1101,11 @@
   /* transform: rotate(45deg); */
 }
 
+.just-validate-error-label {
+  position: absolute;
+  margin-left: 25px;
+}
+
 @media (max-width: 1700px) {
 }
 
@@ -1125,11 +1136,15 @@
 @media (max-width: 992px) {
   html {
     font-size: 12px;
-    /* pointer-events: none; */
-    cursor: default;
   }
 
   * {
+    cursor: default;
+  }
+
+  .button,
+  .header-logo h1 {
+    /* pointer-events: none; */
     cursor: default;
   }
 
