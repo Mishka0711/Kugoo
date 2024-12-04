@@ -149,6 +149,50 @@
   width: 7px;
 }
 
+/* Контейнер для выпадающего списка */
+.dropdown {
+  position: relative;
+  display: contents;
+}
+
+/* Скрытый контент выпадающего списка */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  margin-top: 30px;
+  margin-left: 70px;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 30;
+  border-radius: 5px;
+}
+
+/* Стили для ссылок при наведении */
+.dropdown-content a:hover {
+  background-color: #6f73ee;
+  display: flex;
+
+  color: #fff;
+  border-radius: 5px;
+}
+
+/* Показать выпадающий список при наведении на кнопку */
+.dropdown:hover .dropdown-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.catalog-link {
+  color: #6f73ee;
+  min-height: 30px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
 .catalog-button-text {
   color: rgb(255, 255, 255);
   font-family: "Jost";

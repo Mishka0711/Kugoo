@@ -58,15 +58,28 @@
         <div class="header-search">        
             <a href="./index.php" class="header-logo">
               <h1 class="header-logo-title">KUGOO</h1></a>            
-          <a href="#" class="button catalog-button">
-            <div class="catalog-lines">
-              <div class="catalog-line"></div>
-              <div class="catalog-line"></div>
-              <div class="catalog-line"></div>
+          <div class="dropdown">
+            <a href="#" class="button catalog-button">
+              <div class="catalog-lines">
+                <div class="catalog-line"></div>
+                <div class="catalog-line"></div>
+                <div class="catalog-line"></div>
+              </div>
+              <span class="catalog-text">Каталог</span> 
+              <!-- <p class="catalog-button-text">Каталог</p> -->
+            </a>
+            <div class="dropdown-content">
+              <a href="#" class="catalog-link">Kugoo Kirin M4</a>
+              <a href="#" class="catalog-link">Kugoo Kirin M5</a>
+              <a href="#" class="catalog-link">Kugoo Kirin M6</a>
+              <a href="#" class="catalog-link">Kugoo Kirin M7</a>
+              <a href="#" class="catalog-link">Kugoo Kirin M4</a>
+              <a href="#" class="catalog-link">Kugoo Kirin M5</a>
+              <a href="#" class="catalog-link">Kugoo Kirin M6</a>
+              <a href="#" class="catalog-link">Kugoo Kirin M7</a>              
+           
             </div>
-            <span class="catalog-text">Каталог</span> 
-            <!-- <p class="catalog-button-text">Каталог</p> -->
-          </a>
+          </div>
           <div class="search-box">
             <input
             id="search-name"
@@ -599,7 +612,7 @@
             </div>
             <div class="policy-group">
               <button type="button" class="button button-galka">
-                <svg width="22" height="22" class="client-list-icon-policy cl_invisible">
+                <svg width="22" height="22" class="client-list-icon-policy cl_invisible" id="advanced-usage_consent_checkbox">
                   <use href="img/sprite.svg#galka2"></use>
                 </svg> 
               </button>
