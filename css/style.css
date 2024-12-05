@@ -1165,6 +1165,7 @@
 .just-validate-error-label {
   position: absolute;
   margin-left: 25px;
+  margin-top: -17px;
 }
 
 @media (max-width: 1700px) {

@@ -134,6 +134,12 @@ phone_forms.forEach((form) => {
         errorMessage: "Неполный номер",
       },
     ])
+    .addField("[name=policy_checkbox]", [
+      {
+        rule: "required",
+        errorMessage: "Необходимо согласие на обработку перс. данных",
+      },
+    ])
     .onSuccess((event) => {
       const thisForm = event.target; //Наша форма
       const formData = new FormData(thisForm); //данные из нашей форсы

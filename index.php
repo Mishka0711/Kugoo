@@ -605,21 +605,30 @@
                 placeholder="Введите телефон"
                 maxlength="30"
                 required
-              />            
+              />    
+                      
               <button type="submit" class=" button  make-button3 cta-form-button"  >
                 Оставить заявку на тест-драйв
               </button>            
             </div>
-            <div class="policy-group">
-              <button type="button" class="button button-galka">
-                <svg width="22" height="22" class="client-list-icon-policy cl_invisible" id="advanced-usage_consent_checkbox">
-                  <use href="img/sprite.svg#galka2"></use>
-                </svg> 
-              </button>
-              <p class="policy-group-text">
-                Нажимая на кнопку, вы соглашаетесь на обработку <br> персональных данных и <a href="" class="policy-link2">политикой конфиденциальности</a> 
-              </p>
-            </div>
+              <div class="policy-group">
+                <input
+                    type="checkbox"
+                    id="advanced-usage_consent_checkbox"
+                    name="policy_checkbox"
+                    class="checkbox"
+                  /><label
+                    class="policy-group-text"
+                    for="advanced-usage_consent_checkbox"
+                    > </label
+                  >
+                  <p class="policy-group-text">
+                  Нажимая на кнопку, вы соглашаетесь на обработку <br> персональных данных и <a href="" class="policy-link2">политикой конфиденциальности</a>
+                  </p>
+                </div>
+                <div id="advanced-usage_consent_checkbox-errors-container"></div>
+              </div>
+
             
             <!-- /.input-group -->          
           </form>
@@ -853,21 +862,28 @@
               <button type="submit" class="button modal-form-button ">
                 Оформить предзаказ
               </button>
-            </form>
+
             <!-- /.input-group-wrapper -->
             <div class="modal-form-footer modal-form-footer1">
-              <div class="policy-group">
-                <button type="button" class="button button-galka modal-button-galka">
-                  <svg width="22" height="22" class="client-list-icon-policy cl_invisible">
-                    <use href="img/sprite.svg#galka2"></use>
-                  </svg> 
-                </button>
-                <p class="policy-group-text">
-                  Нажимая на кнопку, вы соглашаетесь на обработку персональных данных и <a href="" class="policy-link2">политикой конфиденциальности</a> 
-                </p>
-              </div>
+            <div class="policy-group">
+                <input
+                    type="checkbox"
+                    id="advanced-usage_consent_checkbox"
+                    name="policy_checkbox"
+                    class="checkbox"
+                  /><label
+                    class="policy-group-text"
+                    for="advanced-usage_consent_checkbox"
+                    > </label
+                  >
+                  <p class="policy-group-text">
+                  Нажимая на кнопку, вы соглашаетесь на обработку персональных данных и <a href="" class="policy-link2">политикой конфиденциальности</a>
+                  </p>
+                </div>
+                <div id="advanced-usage_consent_checkbox-errors-container"></div>
+              </div>             
             </div>
-          </div>
+          </form>
           <!-- /.modal-form-footer -->        
         </div>             
       <img src="img/modal.png" alt="" class="modal-img-cont">
